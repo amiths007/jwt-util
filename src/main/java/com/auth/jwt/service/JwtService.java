@@ -1,11 +1,9 @@
 package com.auth.jwt.service;
 
-import com.auth.jwt.config.JwtConfig;
 import com.auth.jwt.model.JwtRequest;
 import com.auth.jwt.model.JwtResponse;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.security.KeyPair;
@@ -18,9 +16,6 @@ import java.util.Map;
 
 @Service
 public class JwtService {
-
-    @Autowired
-    private JwtConfig jwtConfig;
 
     private static final String DATE_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
 
