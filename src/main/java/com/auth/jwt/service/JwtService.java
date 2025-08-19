@@ -34,7 +34,6 @@ public class JwtService {
     public String getToken(JwtRequest request) {
 
         return Jwts.builder()
-                .setIssuer(jwtConfig.getIssuer())
                 .setClaims(setClaims(request))
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + 2000))
