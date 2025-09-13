@@ -17,7 +17,7 @@ import java.util.Map;
 @Service
 public class JwtService {
 
-    private static final String DATE_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
+    private static final String DATE_TIME_FORMAT = "yyyyMMdd";
 
     public JwtResponse jwtResponse(JwtRequest request) {
 
@@ -25,7 +25,7 @@ public class JwtService {
 
         return JwtResponse.builder()
                 .issuedAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern(DATE_TIME_FORMAT)))
-                .expiration(System.currentTimeMillis() + 60 * 30)
+                .expiration(new Date(System.currentTimeMillis() + 1000 * 60).getTime())
                 .accessToken(token)
                 .build();
 
@@ -36,7 +36,7 @@ public class JwtService {
         return Jwts.builder()
                 .setClaims(setClaims(request))
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + 2000))
+                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60))
                 .signWith(getPrivateKey(), SignatureAlgorithm.RS256)
                 .compact();
     }
