@@ -2,6 +2,7 @@ package com.auth.jwt.service;
 
 import com.auth.jwt.model.JwtRequest;
 import com.auth.jwt.model.JwtResponse;
+import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.stereotype.Service;
@@ -57,7 +58,7 @@ public class JwtService {
             return keyPair.getPrivate();
         } catch (Exception ex) {
 
-            throw new RuntimeException("Error generating private key");
+            throw new JwtException("Error generating private key");
         }
 
     }
